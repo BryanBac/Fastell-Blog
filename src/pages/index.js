@@ -2,6 +2,8 @@ import Head from 'next/head'
 import HomeBar from '@/components/home_bar'
 import Tarjeta from '@/components/tarjeta_preview'
 import styles from '@/styles/Home.module.css'
+import obtener from './api/firebase/get-data'
+import { useEffect, useState } from 'react'
 
 const mockInfo = [
   {
@@ -19,6 +21,22 @@ const mockInfo = [
 ]
 
 export default function Home() {
+  const [articulos, setArticulos] = useState([])
+  const fetchData = async () => {
+    try {
+      const result = await obtener("articulos");
+      setArticulos(result);
+    } catch (error) {
+      // Handle the error if needed
+      console.error("Error fetching data:", error);
+    }
+  };
+  useEffect(() => {
+    fetchData()
+  }, [])
+  useEffect(() => {
+    console.log(articulos)
+  }, [articulos])
   return (
     <>
       <Head>
@@ -30,8 +48,8 @@ export default function Home() {
       <HomeBar enlace="/"></HomeBar>
       <div className="superCentrar">
         <div className={styles.tarjetas}>
-          {mockInfo.map((item) => (
-            <Tarjeta id={item.id} data={item} fecha={item.fecha}></Tarjeta>
+          {articulos.map((item) => (
+            <Tarjeta key={item.id} data={item} fecha={item.fecha}></Tarjeta>
           ))}
         </div>
       </div>

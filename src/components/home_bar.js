@@ -10,8 +10,8 @@ export default function HomeBar(props) {
     const { enlace } = props;
     const [acceso, setAcceso] = useState(false)
     const [mostrar, setMostrar] = useState(false)
-    const [textoBoton, setTextoBoton] = useState(false) 
-    
+    const [textoBoton, setTextoBoton] = useState(false)
+
     useEffect(() => {
         if (typeof window !== 'undefined') {
             try {
@@ -39,10 +39,16 @@ export default function HomeBar(props) {
             </Link>
             <div className={styles.flex}>
                 {mostrar === true &&
-                    <Link className={styles.boton2} href="menu">
-                        <div className={styles.derecha}>
+                    <Link className={styles.boton2} href="crear_blog">
+                        <div className={styles.derecha}
+                            onClick={() => {
+                                sessionStorage.setItem("contenido", "")
+                                sessionStorage.setItem("titulo", "")
+                                sessionStorage.setItem("fecha", "")
+                                sessionStorage.setItem("lectura", false)
+                            }}>
                             <AccountCircleIcon></AccountCircleIcon>
-                            <div className={styles.letras}>Menu</div>
+                            <div className={styles.letras}>Crear</div>
                         </div>
                     </Link>
                 }
