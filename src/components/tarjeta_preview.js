@@ -12,6 +12,7 @@ export default function Tarjeta(props) {
                 sessionStorage.setItem("titulo", data.titulo)
                 sessionStorage.setItem("fecha", data.fecha)
                 sessionStorage.setItem("lectura", true)
+                sessionStorage.setItem("autor", data.autor)
                 router.push("ver_blog")
             }}>
                 <div className={styles.linea}></div>

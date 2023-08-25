@@ -6,6 +6,7 @@ export default function VerBlog() {
     const [titulo, setTitulo] = useState("")
     const [contenido, setContenido] = useState("")
     const [fecha, setFecha] = useState("")
+    const [autor, setAutor] = useState("")
     const [read, setRead] = useState(true)
     useEffect(() => {
         if (typeof window !== 'undefined' && window.sessionStorage) {
@@ -13,12 +14,14 @@ export default function VerBlog() {
             setTitulo(sessionStorage.getItem('titulo'))
             setFecha(sessionStorage.getItem('fecha'))
             setRead(sessionStorage.getItem('lectura'))
+            setAutor(sessionStorage.getItem('autor'))
         }
     }, [])
     return (<>
         <HomeBar enlace="/"></HomeBar>
         <div>
             <h1 className={styles.titulo}>{titulo}</h1>
+            <div className={styles.autor}> <b>Por: </b> {autor}</div>
             <div className={styles.contenidoContainer}>
                 <textarea
                     className={styles.contenido}

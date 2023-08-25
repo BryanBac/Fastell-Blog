@@ -18,11 +18,14 @@ export default function Home() {
         e.preventDefault();
         let x = await autenticar(usuario, contra);
         setPaso(x)
+        // enviar("usuarios", {user: usuario, password: hashPassword(contra)})
+        // setPaso(true)
     };
 
     useEffect(()=>{
         if(paso === true){
             sessionStorage.setItem("acceso", true);
+            sessionStorage.setItem("usuario", usuario);
             router.push("/")
         }
     }, [paso])

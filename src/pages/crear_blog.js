@@ -9,6 +9,7 @@ export default function VerBlog() {
     const [contenido, setContenido] = useState("")
     const [fecha, setFecha] = useState("")
     const [read, setRead] = useState(true)
+    const [autor, setAutor] = useState("")
     const [currentDate, setCurrentDate] = useState(getFormattedDate());
     const router = useRouter()
 
@@ -25,13 +26,15 @@ export default function VerBlog() {
             setTitulo(sessionStorage.getItem('titulo'))
             setFecha(sessionStorage.getItem('fecha'))
             setRead(sessionStorage.getItem('lectura'))
+            setAutor(sessionStorage.getItem('usuario'))
         }
     }, [])
     const enviarData = () => {
         let data = {
             titulo: titulo,
             contenido: contenido,
-            fecha: currentDate
+            fecha: currentDate,
+            autor: autor
         }
         enviar("articulos", data)
         router.push("/")
