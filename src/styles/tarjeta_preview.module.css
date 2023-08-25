@@ -1,0 +1,22 @@
+.grid{
+    display: grid;
+    grid-template-columns: 10% 90%;
+    width: 180px;
+    height: 80px;
+    margin-top: 20px;
+}
+.linea{
+    background-color: rgb(93, 115, 133);
+    width: 100%;
+}
+.segundo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(176, 185, 194);
+}
+.segundo:hover{
+    color: rgb(0, 128, 255);
+    box-shadow: 10px 10px lightblue;
+    cursor: pointer;
+}
